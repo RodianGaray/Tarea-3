@@ -1,114 +1,107 @@
-# 🖥️ Práctica Windows con PowerShell
+# 🪟 Práctica en Windows con PowerShell
 
-Este documento describe la práctica en **Windows PowerShell**, paso a paso, con los comandos corregidos y explicados.
-
----
-
-## 🔹 1. Ir al directorio personal  
-Ejecuta: `cd` y luego `pwd`.  
-Debe mostrar algo como:  
-`C:\Users\Lenovo`  
+Esta práctica tiene como objetivo aprender a usar comandos básicos de **PowerShell** en Windows, similares a los que se usan en Linux.
 
 ---
 
-## 🔹 2. Crear la carpeta principal  
-Ejecuta: `mkdir Practica_Windows` y luego `cd Practica_Windows`.  
+## 🔹 1. Ir al directorio personal
 
----
+```powershell
+cd ~
+pwd
+```
+## 🔹 2. Crear la carpeta principal
+```powershell
+Copiar código
+mkdir Practica_Windows
+cd Practica_Windows
+```
+## 🔹 3. Crear subcarpetas
+```powershell
+Copiar código
+mkdir Documentos, Backup
+ls
+```
+## 🔹 4. Crear y editar archivo
+```powershell
+Copiar código
+cd Documentos
+echo "Hola, este es mi primer archivo en Windows" > nota.txt
+notepad nota.txt
+```
+## 🔹 5. Copiar y renombrar
+```powershell
+Copiar código
+Copy-Item nota.txt ..\Backup\
+Rename-Item nota.txt nota_final.txt
+ls
+```
+## 🔹 6. Ver contenido
+```powershell
+Copiar código
+Get-Content nota_final.txt
+```
+## 🔹 7. Cambiar permisos
+```powershell
 
-## 🔹 3. Crear subcarpetas  
-Ejecuta: `mkdir Documentos, Backup`  
-Verificar con: `ls`  
-Debe mostrar: **Backup** y **Documentos**.  
+icacls nota_final.txt /inheritance:r /grant $env:USERNAME:R
+(Otorgar permisos de lectura/escritura)
+icacls nota_final.txt /inheritance:r /grant $env:USERNAME:F
+```
+## 🔹 8. Buscar archivo en todo el home
+```powershell
+cd ~
+Get-ChildItem -Recurse -Filter "nota_final.txt"
+```
+## 🔹 9. Filtrar contenido (buscar palabra dentro del archivo)
+```powershell
+Select-String -Path ~/Practica_Windows/Documentos/nota_final.txt -Pattern "Windows"
+```
+## 🔹 🔟 Procesos
+Ver procesos:
+```powershell
+Get-Process
+```
+Crear proceso en segundo plano:
+```powershell
+Start-Process notepad -PassThru
+```
+Matar proceso (usar el PID):
+```powershell
+Copiar código
+Stop-Process -Id <PID>
+```
+## 🔹 1️⃣1️⃣ Instalar y usar un paquete
+```powershell
+Copiar código
+winget install cowsay
+cowsay "Ejercicio completado!"
+```
+## 🔹 1️⃣2️⃣ Crear script final
+Crear script:
 
----
+```powershell
+Copiar código
+cd ~/Practica_Windows
+notepad mis_comandos.ps1
+```
+Dentro del archivo escribe:
 
-## 🔹 4. Crear y editar archivo  
-Ejecuta: `cd Documentos`  
-Crear archivo: `echo "Hola, este es mi primer archivo en Windows" > nota.txt`  
-Abrir con: `notepad nota.txt`  
-
----
-
-## 🔹 5. Copiar y renombrar  
-Ejecuta:  
-- `Copy-Item nota.txt ..\Backup\`  
-- `Rename-Item nota.txt nota_final.txt`  
-Verificar con: `ls` (debe aparecer **nota_final.txt**).  
-
----
-
-## 🔹 6. Ver contenido  
-Ejecuta: `Get-Content nota_final.txt`  
-
----
-
-## 🔹 7. Cambiar permisos  
-En Windows se usan **icacls**:  
-$usuario = $env:USERNAME
-icacls nota_final.txt /inheritance:r /grant ($usuario + ":(R)")
-
-La salida debe mostrar que se procesó el archivo correctamente.  
-
----
-
-## 🔹 8. Buscar archivo en todo el home  
-Ejecuta:  
-- `cd ~`  
-- `Get-ChildItem -Recurse -Filter "nota_final.txt"`  
-
----
-
-## 🔹 9. Filtrar contenido (buscar palabra dentro del archivo)  
-Ejecuta:  
-`Select-String -Path "$HOME\Practica_Windows\Documentos\nota_final.txt" -Pattern "Windows"`  
-
-La salida debe mostrar la línea donde aparece la palabra buscada.  
-
----
-
-## 🔹 🔟 Procesos  
-1. Ver procesos activos con: `Get-Process`  
-2. Abrir proceso de prueba (ejemplo con Notepad): `Start-Process notepad`  
-3. Matar proceso:  
-   - `Stop-Process -Id [ID]`  
-   - o `Stop-Process -Name notepad -Force`  
-
----
-
-## 🔹 1️⃣1️⃣ Instalar y usar un paquete  
-En Windows se puede usar **Chocolatey** o **pip**.  
-
-Con Chocolatey:  
-- `choco install cowsay -y`  
-- `cowsay "Ejercicio completado!"`  
-
-Con Python:  
-- `pip install cowsay`  
-- `python -m cowsay "Ejercicio completado!"`  
-
----
-
-## 🔹 1️⃣2️⃣ Crear script final  
-Ejecuta: `cd $HOME\Practica_Windows`  
-Crear archivo con: `notepad mis_comandos.ps1`  
-
-Dentro escribe:  
-
-Script de práctica en Windows
-
+```powershell
+Copiar código
 New-Item -ItemType Directory -Force -Name Logs
-Get-Date | Out-File Logs\fecha.txt
-"Ejercicio completado!" | Out-File Logs\mensaje.txt
+Get-Date | Out-File Logs/fecha.txt
+cowsay "Ejercicio completado!"
+```
+Guardar y cerrar.
+Dar permisos de ejecución:
 
-Guardar y cerrar.  
-
-Dar permisos de ejecución (si no está activado):  
-`Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`  
-
-Ejecutar el script:  
-`.\mis_comandos.ps1`  
-
----
-
-✅ Con esto la práctica queda **completa y sin errores**, adaptada totalmente a **Windows PowerShell**.  
+```powershell
+Copiar código
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+Ejecutar:
+```powershell
+Copiar código
+.\mis_comandos.ps1
+```
