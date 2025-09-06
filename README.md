@@ -104,7 +104,9 @@ cd ~/Practica_Windows
 notepad mis_comandos.ps1
 ```
 Captura:
+
 ![Tarea 3](12.1.jpg)  
+
 Dentro del archivo escribe:
 
 ```powershell
@@ -113,9 +115,12 @@ Get-Date | Out-File Logs/fecha.txt
 cowsay "Ejercicio completado!"
 ```
 Captura:
+
 ![Tarea 3](12.2.jpg)  
+
 ![Tarea 3](12.3.jpg) 
 Guardar y cerrar.
+
 Dar permisos de ejecución:
 
 ```powershell
@@ -123,9 +128,11 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 Captura:
 ![Tarea 3](12.4.jpg)  
+
 Ejecutar:
 ```powershell
 .\mis_comandos.ps1
 ```
 Captura:
+
 ![Tarea 3](12.5.jpg)  
