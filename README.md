@@ -94,7 +94,8 @@ winget install cowsay
 cowsay "Ejercicio completado!"
 ```
 Captura:
-![Tarea 3](10.4.jpg)  
+![Tarea 3](11.1.jpg)  
+![Tarea 3](11.2.jpg) 
 ## 12 Crear script final
 Crear script:
 
@@ -103,7 +104,7 @@ cd ~/Practica_Windows
 notepad mis_comandos.ps1
 ```
 Captura:
-![Tarea 3]()  
+![Tarea 3](12.1.jpg)  
 Dentro del archivo escribe:
 
 ```powershell
@@ -112,7 +113,8 @@ Get-Date | Out-File Logs/fecha.txt
 cowsay "Ejercicio completado!"
 ```
 Captura:
-![Tarea 3]()  
+![Tarea 3](12.2.jpg)  
+![Tarea 3](12.3.jpg) 
 Guardar y cerrar.
 Dar permisos de ejecución:
 
@@ -120,10 +122,10 @@ Dar permisos de ejecución:
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 Captura:
-![Tarea 3]()  
+![Tarea 3](12.4.jpg)  
 Ejecutar:
 ```powershell
 .\mis_comandos.ps1
 ```
 Captura:
-![Tarea 3]()  
+![Tarea 3](12.5.jpg)  
