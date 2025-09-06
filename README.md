@@ -4,54 +4,54 @@ Esta práctica tiene como objetivo aprender a usar comandos básicos de **PowerS
 
 ---
 
-## 🔹 1. Ir al directorio personal
+## 1. Ir al directorio personal
 
 ```powershell
 cd ~
 pwd
 ```
-## 🔹 2. Crear la carpeta principal
+## 2. Crear la carpeta principal
 ```powershell
 mkdir Practica_Windows
 cd Practica_Windows
 ```
-## 🔹 3. Crear subcarpetas
+## 3. Crear subcarpetas
 ```powershell
 mkdir Documentos, Backup
 ls
 ```
-## 🔹 4. Crear y editar archivo
+## 4. Crear y editar archivo
 ```powershell
 cd Documentos
 echo "Hola, este es mi primer archivo en Windows" > nota.txt
 notepad nota.txt
 ```
-## 🔹 5. Copiar y renombrar
+## 5. Copiar y renombrar
 ```powershell
 Copy-Item nota.txt ..\Backup\
 Rename-Item nota.txt nota_final.txt
 ls
 ```
-## 🔹 6. Ver contenido
+## 6. Ver contenido
 ```powershell
 Get-Content nota_final.txt
 ```
-## 🔹 7. Cambiar permisos
+## 7. Cambiar permisos
 ```powershell
 icacls nota_final.txt /inheritance:r /grant $env:USERNAME:R
 (Otorgar permisos de lectura/escritura)
 icacls nota_final.txt /inheritance:r /grant $env:USERNAME:F
 ```
-## 🔹 8. Buscar archivo en todo el home
+## 8. Buscar archivo en todo el home
 ```powershell
 cd ~
 Get-ChildItem -Recurse -Filter "nota_final.txt"
 ```
-## 🔹 9. Filtrar contenido (buscar palabra dentro del archivo)
+## 9. Filtrar contenido (buscar palabra dentro del archivo)
 ```powershell
 Select-String -Path ~/Practica_Windows/Documentos/nota_final.txt -Pattern "Windows"
 ```
-## 🔹 🔟 Procesos
+## 10 Procesos
 Ver procesos:
 ```powershell
 Get-Process
@@ -64,12 +64,12 @@ Matar proceso (usar el PID):
 ```powershell
 Stop-Process -Id <PID>
 ```
-## 🔹 1️⃣1️⃣ Instalar y usar un paquete
+## 11 Instalar y usar un paquete
 ```powershell
 winget install cowsay
 cowsay "Ejercicio completado!"
 ```
-## 🔹 1️⃣2️⃣ Crear script final
+## 12 Crear script final
 Crear script:
 
 ```powershell
